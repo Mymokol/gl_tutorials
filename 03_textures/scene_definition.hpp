@@ -32,7 +32,8 @@ inline SimpleScene createTexturedCubeScene(MaterialFactory &aMaterialFactory, Ge
 			RenderStyle::Solid,
 			{
 				{ "u_textureSampler1", TextureInfo("brick_wall/Brick_Wall_012_COLOR.jpg") },
-				{ "u_textureSampler2", TextureInfo("pebbles/Pebbles_003_COLOR.jpg") }
+				{ "u_textureSampler2", TextureInfo("pebbles/Pebbles_003_COLOR.jpg") },
+				{ "u_alpha", TextureInfo("hole.jpg") }
 			}
 			)
 		);
@@ -57,6 +58,16 @@ inline SimpleScene createMonkeyScene(MaterialFactory &aMaterialFactory, Geometry
 
 	mesh->setScale(glm::vec3(0.5));
 	mesh->setName("MONKEY");
+	mesh->addMaterial(
+		"solid",
+		MaterialParameters(
+			"simple_texture",
+			RenderStyle::Solid,
+			{
+				{ "u_textureSampler", TextureInfo("monkey_uv_texture.png") }
+			}
+			)
+		);
 	// mesh->addMaterial(
 	// 	"solid",
 	// 	MaterialParameters(
@@ -66,23 +77,23 @@ inline SimpleScene createMonkeyScene(MaterialFactory &aMaterialFactory, Geometry
 	// 			{"u_solidColor", glm::vec4(0,0.5,0.5,1)}
 	// 		})
 	// 	);
-	mesh->addMaterial(
-		"solid",
-		MaterialParameters(
-			"phong",
-			RenderStyle::Solid,
-			{
-				{ "light.ambient", glm::vec3(0.3, 0.3, 0.3) },
-				{ "light.diffuse", glm::vec3(0.6, 0.6, 0.6) },
-				{ "light.position", glm::vec3(3.0, 5.0, 6.0) },
-				{ "light.specular", glm::vec3(1.0, 1.0, 1.0) },
-				{ "material.ambient", glm::vec3(0.1, 0.1, 0.1) },
-				{ "material.diffuse", glm::vec3(1.0, 0.5, 0.31) },
-				{ "material.shininess", 32.0f },
-				{ "material.specular", glm::vec3(0.5, 0.5, 0.5) },
-			}
-			)
-		);
+	// mesh->addMaterial(
+	// 	"solid",
+	// 	MaterialParameters(
+	// 		"phong",
+	// 		RenderStyle::Solid,
+	// 		{
+	// 			{ "light.ambient", glm::vec3(0.3, 0.3, 0.3) },
+	// 			{ "light.diffuse", glm::vec3(0.6, 0.6, 0.6) },
+	// 			{ "light.position", glm::vec3(3.0, 5.0, 6.0) },
+	// 			{ "light.specular", glm::vec3(1.0, 1.0, 1.0) },
+	// 			{ "material.ambient", glm::vec3(0.1, 0.1, 0.1) },
+	// 			{ "material.diffuse", glm::vec3(1.0, 0.5, 0.31) },
+	// 			{ "material.shininess", 32.0f },
+	// 			{ "material.specular", glm::vec3(0.5, 0.5, 0.5) },
+	// 		}
+	// 		)
+	// 	);
 	mesh->addMaterial(
 		"wireframe",
 		MaterialParameters(

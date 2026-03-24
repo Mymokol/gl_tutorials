@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/01_triangle_vanilla.dir/link.d CMakeFiles/01_triangle_vanilla.dir/vanilla.cpp.o CMakeFiles/01_triangle_vanilla.dir/__/glad/src/glad.c.o -o 01_triangle_vanilla  /usr/lib64/libglfw.so.3.4 /usr/lib64/libGLX.so /usr/lib64/libOpenGL.so

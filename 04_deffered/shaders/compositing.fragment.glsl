@@ -17,7 +17,22 @@ out vec4 fragColor;
 
 void main() {
 
-	vec3 position = texture(u_position, texCoords).xyz;
+//	// FISHEYE
+//	vec2 centre = vec2(.5, .5);
+//	vec2 vec_from_centre = texCoords - centre;
+//	float distance_from_centre = length(vec_from_centre);
+//	vec2 modified_from_centre = vec_from_centre * distance_from_centre;// * distance_from_centre;
+//	vec2 modifiedTexCoords = modified_from_centre + centre;
+
+//	// SWIRL
+//	vec2 centre = vec2(.5, .5);
+//	vec2 vec_from_centre = texCoords - centre;
+//	float angle =
+
+	// NO MODIFICATION
+	vec2 modifiedTexCoords = texCoords;
+
+	vec3 position = texture(u_position, modifiedTexCoords).xyz;
 	vec3 normal = texture(u_normal, texCoords).xyz;
 	vec3 diffuseColor = texture(u_diffuse, texCoords).xyz;
 	fragColor = vec4(0.01*position.yyy, 1.0);

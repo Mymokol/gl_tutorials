@@ -27,4 +27,17 @@ void main() {
 	out_normal = normalize(normal);
 	//out_position = position.xyz/position.w;
 	out_position = vec3(gl_FragCoord.z, LinearizeDepth(gl_FragCoord.z), 0.0);
+
+
+
+
+
+
+
+//	vec3 screen_centre = vec3(0, 0, 0);
+//	vec3 inter_out_position = vec3(gl_FragCoord.z, LinearizeDepth(gl_FragCoord.z), 0.0);
+//	vec3 inter_vec_from_centre = inter_out_position - screen_centre;
+//	float distance_from_centre = length(inter_vec_from_centre);
+//	vec3 vec_from_centre = inter_vec_from_centre / (distance_from_centre * distance_from_centre);
+//	out_position = inter_out_position + inter_vec_from_centre;
 }

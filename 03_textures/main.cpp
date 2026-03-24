@@ -107,6 +107,8 @@ int main() {
 				GL_CHECK(glDisable(GL_POLYGON_OFFSET_LINE));
 				GL_CHECK(glPolygonOffset(0.0f, 0.0f));
 				GL_CHECK(glPolygonMode(GL_FRONT_AND_BACK, GL_FILL));
+				GL_CHECK(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
+				GL_CHECK(glEnable( GL_BLEND ));
 				renderer.renderScene(scenes[config.currentSceneIdx], camera, RenderOptions{"solid"});
 			}
 			if (config.showWireframe) {

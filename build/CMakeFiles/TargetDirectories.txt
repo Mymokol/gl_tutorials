@@ -1,0 +1,6 @@
+/home/rosie/school/26/gpu/gl_tutorials/build/CMakeFiles/edit_cache.dir
+/home/rosie/school/26/gpu/gl_tutorials/build/CMakeFiles/rebuild_cache.dir
+/home/rosie/school/26/gpu/gl_tutorials/build/01_triangle/CMakeFiles/01_triangle_vanilla.dir
+/home/rosie/school/26/gpu/gl_tutorials/build/01_triangle/CMakeFiles/01_triangle.dir
+/home/rosie/school/26/gpu/gl_tutorials/build/01_triangle/CMakeFiles/edit_cache.dir
+/home/rosie/school/26/gpu/gl_tutorials/build/01_triangle/CMakeFiles/rebuild_cache.dir
