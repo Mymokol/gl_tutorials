@@ -22,6 +22,9 @@ constexpr unsigned int AMBIENT_OCC = 1 << 4;
 constexpr unsigned int SHADOW = 1 << 5;
 constexpr unsigned int DEBUG = 1 << 7;
 
+constexpr float SIN_MULTIPLIER = 0.5f;
+constexpr float SIN_AMPLITUDE = 1.0f;
+
 
 inline SimpleScene createCubeScene(MaterialFactory &aMaterialFactory, GeometryFactory &aGeometryFactory) {
 	SimpleScene scene;
@@ -100,7 +103,8 @@ inline SimpleScene createInstancedCubesScene(MaterialFactory &aMaterialFactory, 
 				float red = (((instanceAttributes.size() + 31415) * 325) % 255) / 255.0f;
 				float green = (((instanceAttributes.size() + 81812) * 17) % 255) / 255.0f;
 				float blue = (((instanceAttributes.size() + 563) * 999) % 255) / 255.0f;
-				instanceAttributes.emplace_back(glm::vec3(x, y, z), glm::vec3(red, green, blue));
+				float y_offset = (std::sin(x * SIN_MULTIPLIER) + std::sin(z * SIN_MULTIPLIER)) * SIN_AMPLITUDE;
+				instanceAttributes.emplace_back(glm::vec3(x, y + y_offset, z), glm::vec3(red, green, blue));
 			}
 		}
 	}
