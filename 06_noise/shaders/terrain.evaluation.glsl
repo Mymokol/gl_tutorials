@@ -46,9 +46,17 @@ void main() {
                 gl_TessCoord.y * tes_in[1].texCoords +
                 gl_TessCoord.z * tes_in[2].texCoords;
 
-    float noise = noise_2d(u_noiseScale*f_texCoord);
-    position += noise * normal * u_maxDisplacement;
-
+    float basic_noise = noise_2d(u_noiseScale*f_texCoord) / 2 // zajímají nás tyhle řádky
+                + noise_2d(u_noiseScale * 2 * f_texCoord) / 4;
+    float rougher_noise =  noise_2d(u_noiseScale * 4 * f_texCoord) / 8
+                + noise_2d(u_noiseScale * 8 * f_texCoord) / 16
+                + noise_2d(u_noiseScale * 16 * f_texCoord) / 32
+                + noise_2d(u_noiseScale * 32 * f_texCoord) / 64
+                + noise_2d(u_noiseScale * 64 * f_texCoord) / 128;
+    position += basic_noise * normal * u_maxDisplacement;
+    float rougher_noise_modulated = rougher_noise * (position.y + .15) * 2;
+    position += rougher_noise_modulated * normal * u_maxDisplacement;
+    if (position.y < -.1) position.y = -.1;
     f_position = vec3(u_modelMat * vec4(position, 1.0));
 
     gl_Position = u_projMat * u_viewMat * u_modelMat * vec4(position, 1.0);
